@@ -12,7 +12,7 @@
 # Сохранение заметок необходимо сделать в формате json или csv формат (разделение полей рекомендуется делать через точку с запятой).
 # При чтении списка заметок реализовать фильтрацию по дате.
 
-# СДЕЛАТЬ: документацию, обработку исключений, выход из программы и фильтрацию по дате
+# СДЕЛАТЬ: документацию, обработку исключений, выход из программы
 
 import csv
 from datetime import datetime
@@ -21,7 +21,12 @@ import pandas as pd
 FILE = "notes.csv"
 ID = 0
 
+def quit_program():
+    user_input = input("Выйти в главное меню: впишите Q (капсом), остаться в этом режиме нажмите Enter: ")
+    return True if user_input == "Q" else False
+
 def find_note():
+    if quit_program(): return
     user_input = input("Введите слово/выражение, по которому надо вывести заметку: ")
     with open(FILE, 'r', encoding='utf-8') as file:
         file_reader = csv.DictReader(file, delimiter = ";")
@@ -38,6 +43,8 @@ def find_note():
                     print("---------------------------------------------------------")
 
 def edit_note():
+    if quit_program(): return
+
     global ID
 
     notes_copy = copy_file()
@@ -99,6 +106,8 @@ def copy_file():
     return res_list
 
 def delete_note():
+    if quit_program(): return
+
     global ID
 
     id_set = set()
@@ -157,6 +166,8 @@ def read_file():
 
             
 def add_note():
+    if quit_program(): return
+
     global ID
 
     print("---------------------------------------------------------")
