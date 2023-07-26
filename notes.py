@@ -12,7 +12,7 @@
 # Сохранение заметок необходимо сделать в формате json или csv формат (разделение полей рекомендуется делать через точку с запятой).
 # При чтении списка заметок реализовать фильтрацию по дате.
 
-# СДЕЛАТЬ: документацию, обработку исключений
+# СДЕЛАТЬ: документацию
 
 import csv
 from datetime import datetime
@@ -223,22 +223,28 @@ def main():
     hello_menu()
 
     while(flag):
-        choosen_mode = int(input("Введите номер режима: "))
-        print("***                                                   ***")
-        match choosen_mode:
-            case 1:
-                read_file()
-            case 2:
-                add_note()
-            case 3:
-                delete_note()
-            case 4:
-                edit_note()
-            case 5:
-                find_note()
-            case 6:
-                flag = False
-            case 7:
-                hello_menu()
+        try:
+            choosen_mode = int(input("Введите номер режима: "))
+            print("***                                                   ***")
+            match choosen_mode:
+                case 1:
+                    read_file()
+                case 2:
+                    add_note()
+                case 3:
+                    delete_note()
+                case 4:
+                    edit_note()
+                case 5:
+                    find_note()
+                case 6:
+                    flag = False
+                case 7:
+                    hello_menu()
+
+        except ValueError:
+            print("Введите число от 1 до 7.")
+        except Exception as e:
+            print(f"Возникла ошибка: {e}")
 
 main()
