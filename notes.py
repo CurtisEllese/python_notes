@@ -16,6 +16,7 @@
 
 import csv
 from datetime import datetime
+import pandas as pd
 
 FILE = "notes.csv"
 ID = 0
@@ -127,12 +128,26 @@ def delete_note():
                         "Текст заметки": dict['Текст заметки'], "Дата/время создания или последнего изменения заметки": 
                         dict['Дата/время создания или последнего изменения заметки']})
 
+def filter_notes_by_date():
+    # Загружаем CSV файл в DataFrame
+    df = pd.read_csv(FILE, delimiter=';')
+
+    # Преобразуем столбец 'Дата/время создания или последнего изменения заметки' в формат даты/времени
+    df['Дата/время создания или последнего изменения заметки'] = pd.to_datetime(df['Дата/время создания или последнего изменения заметки'])
+
+    # Сортируем DataFrame по столбцу с датами от меньшей к большей
+    df.sort_values(by='Дата/время создания или последнего изменения заметки', inplace=True)
+
+    # Сохраняем отфильтрованные данные в новый CSV файл
+    df.to_csv(FILE, index=False, sep=';')
 
 def read_file():
-    with open(FILE, encoding='utf-8') as r_file:
-        file_reader = csv.DictReader(r_file, delimiter = ";")
+    filter_notes_by_date()
 
-        for row in file_reader:
+    with open(FILE, mode='r', encoding='utf-8') as r_file:
+        reader = csv.DictReader(r_file, delimiter=';',  lineterminator="\r")
+
+        for row in reader:
             print("---------------------------------------------------------")
             print(f'ID заметки - {row["ID"]}')
             print(f'Заголовок заметки - {row["Заголовок"]}')
