@@ -73,19 +73,19 @@ def edit_note():
                 row['Заголовок'] = input("Введите заголовок: ")
                 row['Текст заметки'] = input("Введите текст заметки: ")
                 row['Дата/время создания или последнего изменения заметки'] = current_datetime
-    print("---------------------------------------------------------")
-    
-    
-    with open(FILE, 'w', encoding='utf-8') as file:
-        names = ["ID", "Заголовок", "Текст заметки", "Дата/время создания или последнего изменения заметки"]
-        file_writer = csv.DictWriter(file, delimiter = ";", lineterminator="\r", fieldnames=names)
+        print("---------------------------------------------------------")
+        
+        
+        with open(FILE, 'w', encoding='utf-8') as file:
+            names = ["ID", "Заголовок", "Текст заметки", "Дата/время создания или последнего изменения заметки"]
+            file_writer = csv.DictWriter(file, delimiter = ";", lineterminator="\r", fieldnames=names)
 
-        if file.tell() == 0:
-            file_writer.writeheader()
-        for dict in notes_copy:
-            file_writer.writerow({"ID": dict['ID'], "Заголовок": dict['Заголовок'], 
-                    "Текст заметки": dict['Текст заметки'], "Дата/время создания или последнего изменения заметки": 
-                    dict['Дата/время создания или последнего изменения заметки']})
+            if file.tell() == 0:
+                file_writer.writeheader()
+            for dict in notes_copy:
+                file_writer.writerow({"ID": dict['ID'], "Заголовок": dict['Заголовок'], 
+                        "Текст заметки": dict['Текст заметки'], "Дата/время создания или последнего изменения заметки": 
+                        dict['Дата/время создания или последнего изменения заметки']})
 
 
 def get_last_line():
