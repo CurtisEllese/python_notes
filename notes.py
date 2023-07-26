@@ -12,7 +12,7 @@
 # Сохранение заметок необходимо сделать в формате json или csv формат (разделение полей рекомендуется делать через точку с запятой).
 # При чтении списка заметок реализовать фильтрацию по дате.
 
-# СДЕЛАТЬ: документацию, обработку исключений, выход из программы
+# СДЕЛАТЬ: документацию, обработку исключений
 
 import csv
 from datetime import datetime
@@ -27,20 +27,28 @@ def quit_program():
 
 def find_note():
     if quit_program(): return
+
     user_input = input("Введите слово/выражение, по которому надо вывести заметку: ")
+    notes = list()
+
     with open(FILE, 'r', encoding='utf-8') as file:
         file_reader = csv.DictReader(file, delimiter = ";")
 
         for row in file_reader:
             for value in row.values():
                 value_casefold = value.casefold()
-                if user_input.casefold() in value_casefold:
-                    print("---------------------------------------------------------")
-                    print(f'ID заметки - {row["ID"]}')
-                    print(f'Заголовок заметки - {row["Заголовок"]}')
-                    print(f'Текст заметки - {row["Текст заметки"]}')
-                    print(f'Дата/время создания или последнего изменения заметки - {row["Дата/время создания или последнего изменения заметки"]}')
-                    print("---------------------------------------------------------")
+                if user_input.casefold() in value_casefold and row not in notes:
+                    notes.append(row)
+
+        if len(notes):
+            for dict in notes:
+                print("---------------------------------------------------------")
+                print(f'ID заметки - {dict["ID"]}')
+                print(f'Заголовок заметки - {dict["Заголовок"]}')
+                print(f'Текст заметки - {dict["Текст заметки"]}')
+                print(f'Дата/время создания или последнего изменения заметки - {dict["Дата/время создания или последнего изменения заметки"]}')
+                print("---------------------------------------------------------")
+        else: print("Нет заметки с таким ключевым словом")
 
 def edit_note():
     if quit_program(): return
