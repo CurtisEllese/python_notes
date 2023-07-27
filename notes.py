@@ -15,6 +15,10 @@
 import csv
 from datetime import datetime
 import pandas as pd
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
+
 
 FILE = "notes.csv"
 ID = 0
@@ -203,17 +207,17 @@ def add_note():
 
 # Метод для отображения меню
 def hello_menu():
-    print("---------------------------------------------------------")
-    print("Добро пожаловать в NOTES!")
-    print("Выберите действие:")
-    print("Вывести все заметки - 1")
-    print("Добавить заметку - 2")
-    print("Удалить заметку - 3")
-    print("Изменить заметку - 4")
-    print("Поиск по ключевым словам - 5")
-    print("Завершить работу NOTES - 6")
-    print("Напечатать варианты действий снова - 7")
-    print("---------------------------------------------------------")
+    print(Fore.GREEN + Back.WHITE + "---------------------------------------------------------")
+    print(Fore.GREEN + Back.WHITE + "Добро пожаловать в NOTES!")
+    print(Fore.GREEN + Back.WHITE + "Выберите действие:")
+    print(Fore.GREEN + Back.WHITE + "Вывести все заметки - 1")
+    print(Fore.GREEN + Back.WHITE + "Добавить заметку - 2")
+    print(Fore.GREEN + Back.WHITE + "Удалить заметку - 3")
+    print(Fore.GREEN + Back.WHITE + "Изменить заметку - 4")
+    print(Fore.GREEN + Back.WHITE + "Поиск по ключевым словам - 5")
+    print(Fore.GREEN + Back.WHITE + "Завершить работу NOTES - 6")
+    print(Fore.GREEN + Back.WHITE + "Напечатать варианты действий снова - 7")
+    print(Fore.GREEN + Back.WHITE + "---------------------------------------------------------")
 
 # Основной метод для старта программы
 def main():
