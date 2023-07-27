@@ -207,17 +207,17 @@ def add_note():
 
 # Метод для отображения меню
 def hello_menu():
-    print(Fore.GREEN + Back.WHITE + "---------------------------------------------------------")
-    print(Fore.GREEN + Back.WHITE + "Добро пожаловать в NOTES!")
-    print(Fore.GREEN + Back.WHITE + "Выберите действие:")
-    print(Fore.GREEN + Back.WHITE + "Вывести все заметки - 1")
-    print(Fore.GREEN + Back.WHITE + "Добавить заметку - 2")
-    print(Fore.GREEN + Back.WHITE + "Удалить заметку - 3")
-    print(Fore.GREEN + Back.WHITE + "Изменить заметку - 4")
-    print(Fore.GREEN + Back.WHITE + "Поиск по ключевым словам - 5")
-    print(Fore.GREEN + Back.WHITE + "Завершить работу NOTES - 6")
-    print(Fore.GREEN + Back.WHITE + "Напечатать варианты действий снова - 7")
-    print(Fore.GREEN + Back.WHITE + "---------------------------------------------------------")
+    print(Fore.CYAN + Back.BLACK + "---------------------------------------------------------")
+    print(Fore.CYAN + Back.BLACK + "Добро пожаловать в NOTES!")
+    print(Fore.CYAN + Back.BLACK + "Выберите действие:")
+    print(Fore.CYAN + Back.BLACK + "Вывести все заметки - 1")
+    print(Fore.CYAN + Back.BLACK + "Добавить заметку - 2")
+    print(Fore.CYAN + Back.BLACK + "Удалить заметку - 3")
+    print(Fore.CYAN + Back.BLACK + "Изменить заметку - 4")
+    print(Fore.CYAN + Back.BLACK + "Поиск по ключевым словам - 5")
+    print(Fore.CYAN + Back.BLACK + "Завершить работу NOTES - 6")
+    print(Fore.CYAN + Back.BLACK + "Напечатать варианты действий снова - 7")
+    print(Fore.CYAN + Back.BLACK + "---------------------------------------------------------")
 
 # Основной метод для старта программы
 def main():
